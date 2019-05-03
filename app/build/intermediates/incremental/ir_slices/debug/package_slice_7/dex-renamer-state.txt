@@ -1,0 +1,4 @@
+#Fri May 03 15:07:55 ICT 2019
+base.0=D\:\\New folder_1\\Android_Project\\simple-phone-master\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\7
+path.0=classes.dex
+renamed.0=classes.dex

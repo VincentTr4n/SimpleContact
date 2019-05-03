@@ -8,7 +8,6 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-
     <style name="DialpadLetterStyle">
         <item name="android:gravity">center_horizontal</item>
         <item name="android:textSize">12sp</item>
@@ -22,6 +21,5 @@
         <item name="android:textSize">@dimen/dialpad_text_size</item>
         <item name="android:background">?attr/selectableItemBackgroundBorderless</item>
     </style>
-
 
 </resources>
