@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
     private ExampleAdapter adapter;
     private List<Contact> exampleList;
 
-    private static final int REQUEST_APP_CODE = 99999;
+    private static final int REQUEST_APP_CODE = 99;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,17 +40,6 @@ public class MainActivity extends AppCompatActivity {
 
         init();
 
-        fillExampleList();
-        setUpRecyclerView();
-
-        ImageView showDialpad = findViewById(R.id.main_dialpad_button);
-
-        showDialpad.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, DialpadActivity.class);
-            startActivity(intent);
-            v.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_PRESS);
-        });
-
     }
 
     private void init(){
@@ -58,6 +47,18 @@ public class MainActivity extends AppCompatActivity {
         if (MyVersion > Build.VERSION_CODES.LOLLIPOP_MR1) {
             if (!checkIfAlreadyhavePermission()) {
                 requestAppPermission();
+            }
+            else {
+                fillExampleList();
+                setUpRecyclerView();
+
+                ImageView showDialpad = findViewById(R.id.main_dialpad_button);
+
+                showDialpad.setOnClickListener(v -> {
+                    Intent intent = new Intent(MainActivity.this, DialpadActivity.class);
+                    startActivity(intent);
+                    v.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_PRESS);
+                });
             }
         }
     }
@@ -80,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         if(requestCode == REQUEST_APP_CODE && grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
-            fillExampleList();
+            init();
         }
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
